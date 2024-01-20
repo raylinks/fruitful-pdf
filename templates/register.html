@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.1/html2pdf.bundle.js"></script>
+    <title>User KYC Form</title>
+    <style>
+      .custom-form {
+        max-width: 600px;
+        margin: auto;
+      }
+
+      #selfie-preview {
+        width: 60px;
+        height: 30px;
+        margin-bottom: 70px;
+        border: 40px;
+      }
+    </style>
+  </head>
+  <body class="bg-primary text-dark">
+    <div class="container mt-5 custom-form">
+      <h2 class="mb-4">User KYC Form</h2>
+
+      {{if.message}}
+      <h4>{{.message}}</h4>
+      {{end}}
+      <form
+        id="userForm"
+        method="POST"
+        url="/register"
+        enctype="multipart/form-data"
+      >
+        <div class="form-group">
+          <label for="fullName">Full Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="fullName"
+            name="fullName"
+            {{if
+            .user}}
+            value="{{.user.Fullname}}"
+            {{end}}
+            placeholder="Enter your full name"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="dob">Date of Birth:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="dob"
+            name="dob"
+            placeholder="DD/MM/YYYY"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="nationality">Nationality:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nationality"
+            name="nationality"
+            placeholder="Enter your nationality"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Residential Address:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="street"
+            name="street"
+            placeholder="Street"
+            required
+          />
+          <input
+            type="text"
+            class="form-control mt-2"
+            id="city"
+            name="city"
+            placeholder="City"
+            required
+          />
+          <input
+            type="text"
+            class="form-control mt-2"
+            id="state"
+            name="state"
+            placeholder="State/Province"
+            required
+          />
+          <input
+            type="text"
+            class="form-control mt-2"
+            id="country"
+            name="country"
+            placeholder="Country"
+            required
+          />
+          <input
+            type="text"
+            class="form-control mt-2"
+            id="postalCode"
+            name="postalCode"
+            placeholder="Postal Code"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Contact Information:</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="phoneNumber"
+            name="phoneNumber"
+            placeholder="Phone Number"
+            required
+          />
+          <input
+            type="email"
+            class="form-control mt-2"
+            id="email"
+            name="email"
+            placeholder="Email Address"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Identification Document:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="documentType"
+            name="documentType"
+            placeholder="Document Type"
+            required
+          />
+          <input
+            type="text"
+            class="form-control mt-2"
+            id="documentNumber"
+            name="documentNumber"
+            placeholder="Document Number"
+            required
+          />
+          <input
+            type="text"
+            class="form-control mt-2"
+            id="issuingCountry"
+            name="issuingCountry"
+            placeholder="Issuing Country"
+            required
+          />
+          <input
+            type="text"
+            class="form-control mt-2"
+            id="expiryDate"
+            name="expiryDate"
+            placeholder="Expiry Date (DD/MM/YYYY)"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="selfie">Upload Selfie Picture:</label>
+          <input
+            type="file"
+            class="form-control-file"
+            name="file"
+            accept="image/*"
+          />
+
+          <div id="selfie-preview"></div>
+        </div>
+        <button type="submit" value="submit" class="btn btn-light mb-2">
+          Submit
+        </button>
+      </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
