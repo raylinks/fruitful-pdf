@@ -22,11 +22,16 @@ func main() {
 	router := gin.Default()
 	//router := gin.New()
 	router.LoadHTMLGlob("templates/*.html")
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		port = "3000"
+	}
 
 	router.GET("/register", getForm)
 	router.POST("/register", postForm)
 
-	err := router.Run("0.0.0.0:8080")
+	err := router.Run("0.0.0.0:" + port)
 	if err != nil {
 		log.Fatal(err)
 	}
